@@ -1,0 +1,19 @@
+<h1>Pridanie inzeratu</h1>
+
+<p>
+    <%= link_to "Spat", items_path %>
+</p>
+
+<%= form_with model: @item do |f| %>
+    <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+    <div>
+        <%= f.label :price %>
+        <%= f.text_field :price %>
+    </div>
+    <%= f.submit %>
+<% end %>
+
+
