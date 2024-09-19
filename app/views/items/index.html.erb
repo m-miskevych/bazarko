@@ -1,0 +1,14 @@
+<h1>Inzeraty</h1>
+
+
+<%= @items[0].name %><br>
+<%= @items[1].name %><br>
+<%= @items[2].name %><br>
+<br>
+
+<% @items.each do |item| %>
+    <%= item.name %><br>
+    <%= item.price %><br>
+    <%= item.phone %><br>
+    <hr>
+<% end %>
