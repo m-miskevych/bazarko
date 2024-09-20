@@ -2,7 +2,6 @@
 
 <%= link_to "Pridat Inzerat", new_item_path%>  
 
-
 <% @items.each do |item| %>
 
     <h3>
@@ -19,7 +18,5 @@
     <%= form_with model: item, method: :delete do %>
         <%= submit_tag "Delete"%>
     <% end %>
-      
-
     <hr>
 <% end %>

@@ -25,5 +25,4 @@ class ItemsController < ApplicationController
         @item.destroy
         redirect_to items_url
     end
-
 end
