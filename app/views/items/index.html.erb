@@ -1,12 +1,5 @@
 <h1>Inzeraty</h1>
 
-
-<%= @items[0].name %><br>
-<%= @items[1].name %><br>
-<%= @items[2].name %><br>
-<br>
-<br>
-
 <%= link_to "Pridat Inzerat", new_item_path%>  
 
 
@@ -16,10 +9,17 @@
         <%= link_to item.name, item_path(item)%>    
     </h3>
 
-    <%= item_path(item) %><br>
-    <%= item_url(item) %><br>
+    <%# = item_path(item) %>
+    <%# = item_url(item) %>
+
 
     <%= item.price %><br>
     <%= item.phone %><br>
+    
+    <%= form_with model: item, method: :delete do %>
+        <%= submit_tag "Delete"%>
+    <% end %>
+      
+
     <hr>
 <% end %>
