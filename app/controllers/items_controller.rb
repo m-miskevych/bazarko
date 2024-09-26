@@ -21,6 +21,19 @@ class ItemsController < ApplicationController
         end
     end
 
+    def edit
+        @item = Item.find(params[:id])
+    end
+
+    def update
+        @item = Item.find(params[:id])
+        if @item.update item_attributes
+            redirect_to item_url(@item)
+        else
+            render "edit", status: :unprocessable_entity
+        end
+    end
+
     def destroy
         @item = Item.find(params[:id])
         @item.destroy

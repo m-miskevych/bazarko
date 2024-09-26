@@ -1,0 +1,24 @@
+<h1>Uprava inzeratu</h1>
+
+<p>
+    <%= link_to "Spat", items_path %>
+</p>
+<ul class="text-red">
+    <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %><br></li>
+    <% end%>
+</ul>
+
+
+
+<%= form_with model: @item do |f| %>
+    <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+    <div>
+        <%= f.label :price %>
+        <%= f.text_field :price %>
+    </div>
+    <%= f.submit %>
+<% end %>

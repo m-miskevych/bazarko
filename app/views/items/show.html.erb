@@ -8,5 +8,8 @@
 <%= @item.price %>
 
 <p>
+    <%= link_to "Upravit", edit_item_path(@item)%>
+</p>
+<p>
     <%= link_to "Odstranit", item_path(@item), data: {turbo_method: :delete, turbo_confirm: "Urcite?"} %>
 </p>
