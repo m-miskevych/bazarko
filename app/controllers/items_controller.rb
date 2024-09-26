@@ -12,12 +12,13 @@ class ItemsController < ApplicationController
     end
 
     def create
-        @item = Item.create(
-            name: params[:item][:name],
-            price: params[:item][:price]
-        )
-
-        redirect_to item_url(@item)
+        @item = Item.new item_attributes
+        
+        if @item.save
+            redirect_to item_url(@item)
+        else
+            render "new", status: :unprocessable_entity
+        end
     end
 
     def destroy
@@ -25,4 +26,12 @@ class ItemsController < ApplicationController
         @item.destroy
         redirect_to items_url
     end
+
+    private
+    def item_attributes
+        params.require(:item).permit(:name, :price)
+    end
+
+
+
 end
