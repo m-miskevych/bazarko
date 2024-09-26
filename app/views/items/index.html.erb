@@ -15,8 +15,6 @@
     <%= item.price %><br>
     <%= item.phone %><br>
     
-    <%= form_with model: item, method: :delete do %>
-        <%= submit_tag "Delete"%>
-    <% end %>
+    <%= link_to "Odstranit", item_path(item), data: {turbo_method: :delete, turbo_confirm: "Urcite?"} %>
     <hr>
 <% end %>
