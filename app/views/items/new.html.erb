@@ -1,3 +1,12 @@
 <h1>Pridanie inzeratu</h1>
 
-<%= render 'form' %>
+<p>
+    <%= link_to "Spat", items_path %>
+</p>
+<ul class="text-red">
+    <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %><br></li>
+    <% end%>
+</ul>
+
+<%= render 'form', item: @item %>
