@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :items, only: %i[index show new create edit update destroy]
+  resources :categories, only: %i[index show new create edit update destroy]
 end
