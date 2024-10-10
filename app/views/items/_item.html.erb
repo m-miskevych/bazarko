@@ -1,0 +1,9 @@
+<h3><%= link_to item.name, item_path(item)%></h3>
+
+<%= item.price %><br>
+<%= item.phone %>
+    
+<p><%= link_to "Upravit", edit_item_path(item)%></p>
+<p><%= link_to "Odstranit", item_path(item), data: {turbo_method: :delete, turbo_confirm: "Urcite?"} %></p>
+    
+<hr>

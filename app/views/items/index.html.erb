@@ -2,25 +2,8 @@
 
 <%= link_to "Pridat Inzerat", new_item_path%>  
 
-<% @items.each do |item| %>
+<%= render @items %> 
 
-    <h3>
-        <%= link_to item.name, item_path(item)%>    
-    </h3>
-
-    <%# = item_path(item) %>
-    <%# = item_url(item) %>
-
-
-    <%= item.price %><br>
-    <%= item.phone %>
-    
-    <p>
-        <%= link_to "Upravit", edit_item_path(item)%>
-    </p>
-    <p>
-        <%= link_to "Odstranit", item_path(item), data: {turbo_method: :delete, turbo_confirm: "Urcite?"} %>
-    </p>
-    
-    <hr>
-<% end %>
+<%# @items.each do |item| %>
+    <%#= render 'item', item: item %>
+<%# end %>

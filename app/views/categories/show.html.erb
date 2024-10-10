@@ -2,19 +2,15 @@
 
 <p><%= link_to "Spat", categories_path %></p>
 
-<h3><%= @category.name %></h3>
-
-<% if @category.items.present? %>
-  <p>Pocet produktov pod touto kategoriou: <%= @category.items.count %></p>
-  <ul>
-    <% @category.items.each do |item| %>
-      <li><%= item.name %></li>
-      <% end %>
-  </ul>
-<% else %>
-  <p>Ziadne produktu v tejto kategorii</p>
-<% end %>
+<h2><%= @category.name %></h2>
 
 <p><%= link_to "Upravit", edit_category_path(@category) %></p>
 <p><%= link_to "Vymazat", category_path(@category), data: {turbo_method: :delete, turbo_confirm: "Urcite?"} %></p>
 
+<h3>Inzeraty v tejto kategorii</h3>
+
+<%= render @category.items %>
+
+<%# @category.items.each do |item| %>
+  <%#= render 'items/item', item: item %>
+<%# end %>
