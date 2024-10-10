@@ -2,3 +2,6 @@ sk:
   items:
     form:
       save_changes: Ulozit zmeny
+  categories:
+    form:
+      save_changes: Ulozit zmeny
