@@ -12,5 +12,5 @@
         <%= f.label :caterogy_id %>
         <%= f.select :category_id, Category.all.map { |c| [c.name, c.id]} %>
     </div>
-    <%= f.submit %>
+    <%= f.submit t('.save_changes') %>
 <% end %>
