@@ -18,13 +18,15 @@
   </head>
 
   <body>
-    <nav>
-      <ul>
-        <li><%= link_to "Inzeraty", items_path %></li>
-        <li><%= link_to "Kategorie", categories_path %></li>
-      </ul>
-    </nav>
-    <hr>
-    <%= yield %>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><%= link_to "Inzeraty", items_path %></li>
+          <li><%= link_to "Kategorie", categories_path %></li>
+        </ul>
+      </nav>
+      <hr>
+      <%= yield %>
+    </div>
   </body>
 </html>
