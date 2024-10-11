@@ -1,16 +1,22 @@
-<h1>Detial kategorie</h1>
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Detial kategorie</h1>
+    <%= link_to "Spat", categories_path, class: "btn btn-primary" %>
+  </div>
 
-<p><%= link_to "Spat", categories_path %></p>
-
-<h2><%= @category.name %></h2>
-
-<p><%= link_to "Upravit", edit_category_path(@category) %></p>
-<p><%= link_to "Vymazat", category_path(@category), data: {turbo_method: :delete, turbo_confirm: "Urcite?"} %></p>
-
-<h3>Inzeraty v tejto kategorii</h3>
-
-<%= render @category.items %>
-
-<%# @category.items.each do |item| %>
-  <%#= render 'items/item', item: item %>
-<%# end %>
+  <div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center pb-4 pt-4">
+      <h2 class="card-title"><%= @category.name %></h2>
+      <div>
+        <%= link_to "Upraviť", edit_category_path(@category), class: "btn btn-warning" %>
+        <%= link_to "Vymazať", category_path(@category), data: { turbo_method: :delete, turbo_confirm: "Určite?" }, class: "btn btn-danger" %>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Inzeraty v tejto kategorii</h3>
+      <div class="list-group">
+        <%= render @category.items %>
+      </div>
+    </div>
+  </div>
+</div>

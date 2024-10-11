@@ -18,15 +18,34 @@
   </head>
 
   <body>
-    <div class="container">
-      <nav>
-        <ul>
-          <li><%= link_to "Inzeraty", items_path %></li>
-          <li><%= link_to "Kategorie", categories_path %></li>
-        </ul>
+    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Bazarko</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <%= link_to "Inzeraty", items_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Kategorie", categories_path, class: "nav-link" %>
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
-      <hr>
+
+    <div class="container" style="padding-bottom: 80px;"> 
       <%= yield %>
     </div>
+
+    <footer class="text-center py-3 fixed-bottom" style="background-color: #e3f2fd;">
+      <div class="container">
+        <p class="mb-0">© 2024 Bazarko</p>
+      </div>
+    </footer>
+
   </body>
 </html>

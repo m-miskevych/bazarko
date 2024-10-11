@@ -1,8 +1,10 @@
-<h1>Pridanie inzeratu</h1>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Pridanie inzeratu</h1>
+        <p><%= link_to "Spat", items_path, class: "btn btn-primary" %></p>
+    </div>
 
-<p>
-    <%= link_to "Spat", items_path %>
-</p>
+    <%= render 'shared/errors', resource: @item %>
+    <%= render 'form', item: @item %>
 
-<%= render 'shared/errors', resource: @item %>
-<%= render 'form', item: @item %>
+</div>
