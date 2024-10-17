@@ -17,4 +17,8 @@ Rails.application.routes.draw do
   resources :categories
 
   get "contact", to: "pages#contact"
+
+  namespace :admin do
+    resources :categories
+  end
 end
