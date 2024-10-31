@@ -24,9 +24,9 @@
       <%= render 'shared/navbar' %>
     <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
+    <%= content_tag :p, notice if notice.present? %>
+    <%= content_tag :p, alert if alert.present? %>
+
     <div class="container" style="padding-bottom: 80px;"> 
       <%= yield %>
     </div>
