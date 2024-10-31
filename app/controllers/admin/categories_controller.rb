@@ -1,5 +1,7 @@
 class Admin::CategoriesController < ApplicationController
-  http_basic_authenticate_with name: "admin", password: "123123"
+  # http_basic_authenticate_with name: "admin", password: "1234"
+  before_action :authenticate_user!
+
   layout "admin"
   def index
     @categories = Category.all
