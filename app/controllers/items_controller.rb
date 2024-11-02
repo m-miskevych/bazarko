@@ -24,21 +24,33 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+
+    if @item.user_id != current_user.id
+      redirect_to items_url, alert: "Nemas opravenenie editovat tento inzerat"
+    end
   end
 
   def update
     @item = Item.find(params[:id])
+    if @item.user_id == current_user.id
       if @item.update item_attributes
         redirect_to item_url(@item)
       else
         render "edit", status: :unprocessable_entity
       end
+    else
+      redirect_to items_url, alert: "Nemas opravenenie editovat tento inzerat"
+    end
   end
 
   def destroy
     @item = Item.find(params[:id])
-    @item.destroy
-    redirect_to items_url
+    if @item.user_id == current_user.id
+      @item.destroy
+      redirect_to items_url
+    else
+      redirect_to items_url, alert: "Nemas opravnenie vymazat tento inzerat."
+    end
   end
 
   private
