@@ -2,6 +2,7 @@
   <h4 class="mb-2"><%= link_to item.name, item_path(item), class: "text-decoration-none" %></h4>
 
   <p class="fw-bold">Cena: <%= item.price %> €</p>
+  <p class="">Majitel: <%= item.user.email %></p>
 
   <div class="d-flex justify-content-start gap-2">
     <%= link_to "Upravit", edit_item_path(item), class: "btn btn-warning btn-sm" %>

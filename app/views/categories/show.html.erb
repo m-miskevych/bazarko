@@ -1,0 +1,7 @@
+<h2><%= @category.name %></h2>
+
+<%= render @category.items %>
+
+<% if @category.items.empty? %>
+  <p class="alert alert-warning">V tejto kategorii sa nenachadzaju ziadne inzeraty</p>
+<% end %>
