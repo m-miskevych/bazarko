@@ -7,10 +7,10 @@
 
   <div class="row">
   <% @categories.each do |category| %>
-    <div class="col-md-4">
-      <div class="card mb-4">
+    <div class="col-12">
+      <div class="card mb-3 border-0 shadow-lg bg-light">
         <div class="card-body">
-          <h5 class="card-title"><%= link_to category.name, admin_category_path(category), style: "text-decoration: none;" %></h5>
+          <h5 class="card-title"><%= link_to category.name, admin_category_path(category), class: "text-decoration-none text-primary" %></h5>
           <p>
             <%= link_to "Upravit", edit_admin_category_path(category), class: "btn btn-warning" %>
             <%= link_to "Vymazat", admin_category_path(category), data: { turbo_method: :delete, turbo_confirm: "Urcite?" }, class: "btn btn-danger" %>
