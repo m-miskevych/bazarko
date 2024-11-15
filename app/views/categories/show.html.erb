@@ -1,6 +1,8 @@
 <h2><%= @category.name %></h2>
 
-<%= render @category.items %>
+<div class="list-group">
+  <%= render @category.items %>
+</div>
 
 <% if @category.items.empty? %>
   <p class="alert alert-warning">V tejto kategorii sa nenachadzaju ziadne inzeraty</p>

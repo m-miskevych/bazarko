@@ -1,8 +1,10 @@
-<div class="list-group-item">
-  <h4 class="mb-2"><%= link_to item.name, item_path(item), class: "text-decoration-none" %></h4>
+<div class="list-group-item shadow-sm mb-3 p-3 rounded bg-light">
+  <h4 class="mb-2">
+    <%= link_to item.name, item_path(item), class: "text-decoration-none" %>
+  </h4>
 
   <p class="fw-bold">Cena: <%= item.price %> €</p>
-  <p class="">Majitel: <%= item.user.email %></p>
+  <p>Majitel: <%= item.user.email %></p>
 
   <% if item.user == current_user %>
     <div class="d-flex justify-content-start gap-2">
