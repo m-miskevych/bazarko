@@ -14,7 +14,13 @@ Rails.application.routes.draw do
   root "pages#index"
 
   #  ak sa pouziju vsetky actions, netreba only i
-  resources :items, only: %i[index show new create edit update destroy]
+  # resources :items, only: %i[index show new create edit update destroy]
+  resources :items do
+    member do
+      delete :remove_image
+    end
+  end
+
   resources :categories
 
   get "contact", to: "pages#contact"

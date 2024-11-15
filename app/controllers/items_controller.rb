@@ -41,8 +41,14 @@ class ItemsController < ApplicationController
     redirect_to items_url
   end
 
+  def remove_image
+    @image = ActiveStorage::Attachment.find(params[:id])
+    @image.purge
+    redirect_to item_url
+  end
+
   private
   def item_attributes
-      params.require(:item).permit(:name, :price, :category_id)
+      params.require(:item).permit(:name, :price, :category_id, images: [])
   end
 end
