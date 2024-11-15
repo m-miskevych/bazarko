@@ -4,8 +4,10 @@
   <p class="fw-bold">Cena: <%= item.price %> €</p>
   <p class="">Majitel: <%= item.user.email %></p>
 
-  <div class="d-flex justify-content-start gap-2">
-    <%= link_to "Upravit", edit_item_path(item), class: "btn btn-warning btn-sm" %>
-    <%= link_to "Odstranit", item_path(item), class: "btn btn-danger btn-sm", data: { turbo_method: :delete, turbo_confirm: "Určite?" } %>
-  </div>
+  <% if item.user == current_user %>
+    <div class="d-flex justify-content-start gap-2">
+      <%= link_to "Upravit", edit_item_path(item), class: "btn btn-warning btn-sm" %>
+      <%= link_to "Odstranit", item_path(item), class: "btn btn-danger btn-sm", data: { turbo_method: :delete, turbo_confirm: "Určite?" } %>
+    </div>
+  <% end %>
 </div>

@@ -14,9 +14,10 @@
         <p>Majitel: <%= @item.user.email %></p>
       </h6>
       <p class="card-text">Cena: <%= @item.price %> €</p>
-      <%= link_to "Upravit", edit_item_path(@item), class: "btn btn-warning"%>
-      <%= link_to "Odstranit", item_path(@item), data: {turbo_method: :delete, turbo_confirm: "Urcite?"}, class: "btn btn-danger" %>
-
+      <% if @item.user == current_user %>
+        <%= link_to "Upravit", edit_item_path(@item), class: "btn btn-warning"%>
+        <%= link_to "Odstranit", item_path(@item), data: {turbo_method: :delete, turbo_confirm: "Urcite?"}, class: "btn btn-danger" %>
+      <% end %>
     </div>
   </div>
 </div>
