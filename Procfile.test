@@ -1,0 +1,2 @@
+web: bin/rails server -p 5017 -e test --pid tmp/pids/server2.pid
+cypress: yarn cypress open --project ./e2e

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Ensure `foreman` is installed
+if ! gem list foreman -i --silent; then
+  echo "Installing foreman..."
+  gem install foreman
+fi
+
+# Start processes from `Procfile.test`
+foreman start -f Procfile.test
