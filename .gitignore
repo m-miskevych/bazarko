@@ -40,3 +40,5 @@
 !/app/assets/builds/.keep
 
 .vscode/settings.json
+
+/node_modules
