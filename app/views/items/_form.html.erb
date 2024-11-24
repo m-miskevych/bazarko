@@ -16,15 +16,12 @@
         <%= f.label :image, "Zvol obrazok", class: "form-label" %><br>
         <% if item.images.attached? %>
             <% item.images.each do |image| %>
-            <%= f.hidden_field :images, multiple: true, value: image.signed_id %>
-            <%= image_tag(image, width: 150) %>
-            <%= link_to "Vymazat", remove_image_item_path(image), data: {turbo_method: :delete, turbo_confirm: "Urcite?"}, class: "btn btn-danger btn-sm mt-2" %>
+                <%= f.hidden_field :images, multiple: true, value: image.signed_id %>
+                <%= image_tag(image, width: 150) %>
+                <%= link_to "Vymazat", remove_image_item_path(image), data: {turbo_method: :delete, turbo_confirm: "Urcite?"}, class: "btn btn-danger btn-sm mt-2" %>
             <% end %>
         <% end %>
-
         <%= f.file_field :images, multiple: true, class: "form-control form-control-sm mt-2" %>
-
-    </div>
     </div>
 
     <div class="mt-3">
