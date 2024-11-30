@@ -9,4 +9,15 @@ class Item < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 4 }
   validates :price, presence: true
+
+  scope :search_by_name_or_category, ->(query) {
+    if query.present?
+      joins(:category).where(
+        "items.name LIKE :query OR categories.name LIKE :query",
+        query: "%#{query}%"
+      )
+    else
+      all
+    end
+  }
 end

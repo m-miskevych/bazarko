@@ -4,7 +4,19 @@
     <%= link_to "Pridat Inzerat", new_item_path, class: "btn btn-primary" %>
   </div>
 
+  <%= form_with url: items_path, method: :get, local: true do |form| %>
+    <div class="input-group mb-3">
+      <%= form.text_field :search, class: "form-control", placeholder: "Vyhľadať inzerát...", value: params[:search] %>
+      <%= form.submit "Hľadať", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+
   <div class="list-group">
     <%= render @items %> 
+  </div>
+
+  <div class="pagination">
+    <%= paginate @items %>
   </div>
 </div>

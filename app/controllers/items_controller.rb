@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
   def index
-    @items = Item.all
+    # @items = Item.all
+    # @items = Item.page(params[:page]).per(3)
+    @items = Item.search_by_name_or_category(params[:search]).page(params[:page]).per(3)
   end
 
   def show
