@@ -1,24 +1,35 @@
-<div class="list-group-item shadow-sm mb-3 p-3 rounded bg-light">
-  <% if item.images.first&.representable? %>
-    <%= link_to item_path(item) do %>
-      <%= image_tag item.images.first.variant(:thumb), class: 'img-fluid' %>
-    <% end %>
-  <% end %>
-  
-  <h4 class="mb-2">
-    <%= link_to item.name, item_path(item), class: "text-decoration-none" %>
-  </h4>
-
-  <p class="fw-bold">Cena: <%= item.price %> €</p>
-  <p>Majitel: <%= item.user.email %></p>
-  
-  <div class="mt-3">
-    <% if item.user == current_user %>
-      <div class="d-flex justify-content-start gap-2">
-        <%= link_to "Upravit", edit_item_path(item), class: "btn btn-warning btn-sm" %>
-        <%= link_to "Odstranit", item_path(item), class: "btn btn-danger btn-sm", data: { turbo_method: :delete, turbo_confirm: "Určite?" } %>
+<div class="col mb-4">
+  <div class="card h-100 d-flex flex-column">
+    <div class="row g-0 flex-grow-1">
+      <% if item.images.first&.representable? %>
+        <!-- Ľavý stĺpec s obrázkom -->
+        <div class="col-md-4 d-flex align-items-center">
+          <%= link_to item_path(item) do %>
+            <%= image_tag item.images.first.variant(:thumb), class: "img-fluid rounded m-3" %>
+          <% end %>
+        </div>
+      <% end %>
+      <!-- Pravý stĺpec s textom -->
+      <div class="<%= item.images.first&.representable? ? 'col-md-8' : 'col-12' %>">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title"><%= link_to item.name, item_path(item), class: "text-decoration-none" %></h5>
+          <p class="card-text text-muted">Cena: <strong><%= number_to_currency(item.price, unit: "€") %></strong></p>
+          <p class="card-text text-muted">Kategoria: <strong><%= item.category.name %></strong></p>
+          <p class="card-text text-muted">Majitel: <strong><%= item.user.email %></strong></p>
+        </div>
       </div>
-    <% end %>
+    </div>
+
+    <div class="card-footer mt-auto d-flex justify-content-between align-items-center">
+      <small class="text-muted">Publikované: <%= item.created_at.strftime("%d.%m.%Y") %></small>
+      <% if item.user == current_user %>
+        <div class="d-flex gap-2">
+          <%= link_to "Upraviť", edit_item_path(item), class: "btn btn-warning btn-sm" %>
+          <%= link_to "Odstrániť", item_path(item), class: "btn btn-danger btn-sm", data: { turbo_method: :delete, turbo_confirm: "Určite?" } %>
+        </div>
+      <% else %>
+        <%= link_to "Zobraziť viac", item_path(item), class: "btn btn-primary btn-sm" %>
+      <% end %>
+    </div>
   </div>
-  
 </div>

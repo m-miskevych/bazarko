@@ -1,47 +1,51 @@
-<div class="container mt-5">
+<div class="container">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h1><%= @item.name %></h1>
     <%= link_to "Spat", items_path, class: "btn btn-primary" %>
   </div>
+</div>
 
-  <div class="card mb-4">
-    <div class="card-body">
-      <h5 class="card-title"><%= @item.name %></h5>
-      <h6 class="card-subtitle text-body-secondary">
-        <% if @item.category.present? %>
-          <p>Katerogia: <%= @item.category.name %></p>
+<div class="card h-100 d-flex flex-column">
+  <div class="card-body flex-grow-1">
+    <h5 class="card-title"><%= @item.name %></h5>
+    <p class="card-text text-muted">Cena: <strong><%= number_to_currency(@item.price, unit: "€") %></strong></p>
+    <p class="card-text text-muted">Kategoria: <strong><%= @item.category.name %></strong></p>
+    <p class="card-text text-muted">Majitel: <strong><%= @item.user.email %></strong></p>
+
+    <div id="carouselExample" class="carousel slide">
+      <div class="carousel-inner">
+        <% @item.images.each_with_index do |image, index| %>
+          <div class="carousel-item <%= 'active' if index == 0 %>">
+            <%= image_tag image.variant(:normal), class: "d-block w-100" if image.representable? %>
+          </div>
         <% end %>
-        <p>Majitel: <%= @item.user.email %></p>
-      </h6>
-      <p class="card-text">Cena: <%= @item.price %> €</p>
-
-      <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-          <% @item.images.each_with_index do |image, index| %>
-            <div class="carousel-item <%= 'active' if index == 0 %>">
-              <%= image_tag image.variant(:normal), class: "d-block w-100" if image.representable? %>
-            </div>
-          <% end %>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
-
-      <div class="mt-3">
-        <% if @item.user == current_user %>
-        <%= link_to "Upravit", edit_item_path(@item), class: "btn btn-warning"%>
-        <%= link_to "Odstranit", item_path(@item), data: {turbo_method: :delete, turbo_confirm: "Urcite?"}, class: "btn btn-danger" %>
-      <% end %>
-      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
   </div>
+
+  <!-- Footer je nastavený tak, aby bol na spodku karty -->
+  <div class="card-footer mt-auto d-flex justify-content-between align-items-center">
+    <small class="text-muted">Publikované: <%= @item.created_at.strftime("%d.%m.%Y") %></small>
+    <% if @item.user == current_user %>
+      <div class="d-flex gap-2">
+        <%= link_to "Upraviť", edit_item_path(@item), class: "btn btn-warning btn-sm" %>
+        <%= link_to "Odstrániť", item_path(@item), class: "btn btn-danger btn-sm", data: { turbo_method: :delete, turbo_confirm: "Určite?" } %>
+      </div>
+    <% else %>
+      <%= link_to "Zobraziť viac", item_path(@item), class: "btn btn-primary btn-sm" %>
+    <% end %>
+  </div>
 </div>
+
+
 
 
 
