@@ -1,19 +1,27 @@
+<!-- Language Switcher -->
+      <div class="language-switcher" style="text-align: right; margin-bottom: 20px;">
+        <%= form_with(url: root_path, method: :get, local: true) do %>
+          <%= select_tag :locale, 
+            options_for_select(I18n.available_locales.map { |locale| [locale.to_s.upcase, locale] }, I18n.locale), 
+            onchange: 'this.form.submit()' %>
+        <% end %>
+      </div>
 <div class="container mt-5">
   <!-- Welcome Section -->
   <div class="text-center mb-5">
-    <h1 class="display-4">Vitaj na Bazarko!</h1>
-    <p class="lead">Prezerajte, vyhľadávajte alebo pridávajte inzeráty rýchlo a jednoducho.</p>
+    <h1 class="display-4"><%= t('homepage.welcome.title') %></h1>
+    <p class="lead"><%= t('homepage.welcome.description') %></p>
     <div class="d-flex justify-content-center gap-3">
-      <a href="/items" class="btn btn-primary btn-lg">Pozrieť inzeráty</a>
-      <a href="/categories" class="btn btn-outline-secondary btn-lg">Preskúmať kategórie</a>
-      <a href="/items/new" class="btn btn-success btn-lg">Pridať nový inzerát</a>
+      <a href="/items" class="btn btn-primary btn-lg"><%= t('homepage.welcome.view_items') %></a>
+      <a href="/categories" class="btn btn-outline-secondary btn-lg"><%= t('homepage.welcome.explore_categories') %></a>
+      <a href="/items/new" class="btn btn-success btn-lg"><%= t('homepage.welcome.add_new_item') %></a>
     </div>
   </div>
 
   <!-- Featured Ads Section -->
   <div class="row mb-5">
     <div class="col">
-      <h2 class="mb-4 text-center">Najnovšie inzeráty</h2>
+      <h2 class="mb-4 text-center"><%= t('homepage.latest_ads.title') %></h2>
       <% if @latest_items.present? %>
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <% @latest_items.each do |item| %>
@@ -21,18 +29,18 @@
               <div class="card h-100">
                 <div class="card-body">
                   <h5 class="card-title"><%= item.name %></h5>
-                  <p class="card-text text-muted">Cena: <strong><%= number_to_currency(item.price, unit: "€") %></strong></p>
-                  <a href="<%= item_path(item) %>" class="btn btn-primary btn-sm">Zobraziť viac</a>
+                  <p class="card-text text-muted"><%= t('item.price') %> <strong><%= number_to_currency(item.price, unit: "€") %></strong></p>
+                  <a href="<%= item_path(item) %>" class="btn btn-primary btn-sm"><%= t('homepage.latest_ads.more_details') %></a>
                 </div>
                 <div class="card-footer">
-                  <small class="text-muted">Publikované: <%= item.created_at.strftime("%d.%m.%Y") %></small>
+                  <small class="text-muted"><%= t('homepage.latest_ads.published') %> <%= item.created_at.strftime("%d.%m.%Y") %></small>
                 </div>
               </div>
             </div>
           <% end %>
         </div>
       <% else %>
-        <p class="text-center text-muted">Žiadne inzeráty zatiaľ nie sú dostupné.</p>
+        <p class="text-center text-muted"><%= t('homepage.latest_ads.no_ads') %></p>
       <% end %>
     </div>
   </div>

@@ -5,5 +5,5 @@
 </div>
 
 <% if @category.items.empty? %>
-  <p class="alert alert-warning">V tejto kategorii sa nenachadzaju ziadne inzeraty</p>
+  <p class="alert alert-warning"><%= t('categories.show.empty') %></p>
 <% end %>

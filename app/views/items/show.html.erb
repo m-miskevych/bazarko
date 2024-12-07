@@ -1,16 +1,16 @@
 <div class="container">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h1><%= @item.name %></h1>
-    <%= link_to "Spat", items_path, class: "btn btn-primary" %>
+    <%= link_to link_to t('items.show.back'), items_path, class: "btn btn-primary" %>
   </div>
 </div>
 
 <div class="card h-100 d-flex flex-column">
   <div class="card-body flex-grow-1">
     <h5 class="card-title"><%= @item.name %></h5>
-    <p class="card-text text-muted">Cena: <strong><%= number_to_currency(@item.price, unit: "€") %></strong></p>
-    <p class="card-text text-muted">Kategoria: <strong><%= @item.category.name %></strong></p>
-    <p class="card-text text-muted">Majitel: <strong><%= @item.user.email %></strong></p>
+    <p class="card-text text-muted"><%= t('items.show.price') %>: <strong><%= number_to_currency(@item.price, unit: "€") %></strong></p>
+    <p class="card-text text-muted"><%= t('items.show.category') %>: <strong><%= @item.category.name %></strong></p>
+    <p class="card-text text-muted"><%= t('items.show.owner') %>: <strong><%= @item.user.email %></strong></p>
 
     <div id="carouselExample" class="carousel slide">
       <div class="carousel-inner">
@@ -22,25 +22,24 @@
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+        <span class="visually-hidden"><%= t('items.show.carousel.previous') %></span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+        <span class="visually-hidden"><%= t('items.show.carousel.next') %></span>
       </button>
     </div>
   </div>
 
-  <!-- Footer je nastavený tak, aby bol na spodku karty -->
   <div class="card-footer mt-auto d-flex justify-content-between align-items-center">
-    <small class="text-muted">Publikované: <%= @item.created_at.strftime("%d.%m.%Y") %></small>
+    <small class="text-muted"><%= t('items.show.published') %>: <%= @item.created_at.strftime("%d.%m.%Y") %></small>
     <% if @item.user == current_user %>
       <div class="d-flex gap-2">
-        <%= link_to "Upraviť", edit_item_path(@item), class: "btn btn-warning btn-sm" %>
-        <%= link_to "Odstrániť", item_path(@item), class: "btn btn-danger btn-sm", data: { turbo_method: :delete, turbo_confirm: "Určite?" } %>
+        <%= link_to t('items.show.edit'), edit_item_path(@item), class: "btn btn-warning btn-sm" %>
+        <%= link_to t('items.show.delete'), item_path(@item), class: "btn btn-danger btn-sm", data: { turbo_method: :delete, turbo_confirm: t('items.show.delete_confirm') } %>
       </div>
     <% else %>
-      <%= link_to "Zobraziť viac", item_path(@item), class: "btn btn-primary btn-sm" %>
+      <%= link_to t('items.show.view_more'), item_path(@item), class: "btn btn-primary btn-sm" %>
     <% end %>
   </div>
 </div>

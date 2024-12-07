@@ -3,40 +3,40 @@
 
 <nav class="navbar navbar-expand-lg bg-white shadow p-3 mb-4 rounded">
   <div class="container-fluid">
-    <%= link_to 'Bazarko', root_path, class: 'navbar-brand fw-bold fs-4' %>
+    <%= link_to t('navbar.brand'), root_path, class: 'navbar-brand fw-bold fs-4' %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= link_to "Inzeraty", items_path, class: "nav-link #{ 'active fw-bold' if controller_name == 'items' } fs-5" %>
+          <%= link_to t('navbar.items'), items_path, class: "nav-link #{ 'active fw-bold' if controller_name == 'items' } fs-5" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Kategorie", categories_path, class: "nav-link #{ 'active fw-bold' if controller_name == 'categories' } fs-5" %>
+          <%= link_to t('navbar.categories'), categories_path, class: "nav-link #{ 'active fw-bold' if controller_name == 'categories' } fs-5" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Kontakt", contact_path, class: "nav-link #{ 'active fw-bold' if current_page?(contact_path) } fs-5" %>
+          <%= link_to t('navbar.contact'), contact_path, class: "nav-link #{ 'active fw-bold' if current_page?(contact_path) } fs-5" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Admin", admin_categories_path, class: "nav-link #{ 'active fw-bold' if current_page?(admin_categories_path) } fs-5" %>
+          <%= link_to t('navbar.admin'), admin_categories_path, class: "nav-link #{ 'active fw-bold' if current_page?(admin_categories_path) } fs-5" %>
         </li>
       </ul>
       <ul class="navbar-nav d-flex align-items-center">
         <% if user_signed_in? %>
           <li class="nav-item nav-link me-3 fs-5"><%= current_user.email %></li>
           <li class="nav-item me-2">
-            <%= link_to "Profile", edit_user_registration_path, class: "btn btn-outline-primary btn-sm rounded-pill fs-6" %>
+            <%= link_to t('navbar.profile'), edit_user_registration_path, class: "btn btn-outline-primary btn-sm rounded-pill fs-6" %>
           </li>
           <li class="nav-item">
-            <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger btn-sm rounded-pill fs-6" %>
+            <%= button_to t('navbar.logout'), destroy_user_session_path, method: :delete, class: "btn btn-outline-danger btn-sm rounded-pill fs-6" %>
           </li>
         <% else %>
           <li class="nav-item me-2">
-            <%= link_to "Login", new_user_session_path, class: "btn btn-primary btn-sm rounded-pill fs-6" %>
+            <%= link_to t('navbar.login'), new_user_session_path, class: "btn btn-primary btn-sm rounded-pill fs-6" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Register", new_user_registration_path, class: "btn btn-primary btn-sm rounded-pill fs-6" %>
+            <%= link_to t('navbar.register'), new_user_registration_path, class: "btn btn-primary btn-sm rounded-pill fs-6" %>
           </li>
         <% end %>
       </ul>

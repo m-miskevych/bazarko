@@ -1,31 +1,96 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  navbar:
+    brand: "Bazarko"
+    categories: "Categories"
+    profile: "Profile"
+    logout: "Logout"
+    items: "Items"
+    contact: "Contact"
+    admin: "Admin"
+    login: "Login"
+    register: "Register"
+  homepage:
+    welcome:
+      title: "Welcome to Bazarko!"
+      description: "Browse, search, or post ads quickly and easily."
+      view_items: "View Items"
+      explore_categories: "Explore Categories"
+      add_new_item: "Add New Item"
+    latest_ads:
+      title: "Latest Ads"
+      no_ads: "No ads are available yet."
+      more_details: "View More"
+      published: "Published:"
+    item:
+      price: "Price"
+  items:
+    index:
+      title: "Items"
+      add_item: "Add Item"
+      search_placeholder: "Search for an item..."
+      search_button: "Search"
+    edit:
+      title: "Edit Item"
+      back: "Back"
+    new:
+      title: "Add New Item"
+      back: "Back"
+    show:
+      back: "Back"
+      price: "Price"
+      category: "Category"
+      owner: "Owner"
+      published: "Published"
+      edit: "Edit"
+      delete: "Delete"
+      delete_confirm: "Are you sure?"
+      view_more: "View More"
+      carousel:
+        previous: "Previous"
+        next: "Next"
+    card:
+      price: "Price"
+      category: "Category"
+      owner: "Owner"
+      published: "Published"
+      edit: "Edit"
+      delete: "Delete"
+      delete_confirm: "Are you sure?"
+      view_more: "View More"
+    form:
+      name: "Item Name"
+      price: "Price"
+      category: "Category"
+      image: "Choose Image"
+      remove_image: "Remove"
+      remove_image_confirm: "Are you sure?"
+      save_changes: "Save Changes"
+  categories:
+    index:
+      title: "Categories"
+      link: "View details"
+    show:
+      title: "Category Details"
+      back: "Back"
+      edit: "Edit"
+      delete: "Delete"
+      delete_confirm: "Are you sure?"
+      empty: "There are no advertisements in this category."
+      admin:
+        back: "Back"
+        edit: "Edit"
+        delete: "Delete"
+        delete_confirm: "Are you sure?"
+    new:
+      title: "Add Category"
+      back: "Back"
+      save: "Save"
+      cancel: "Cancel"
+    edit:
+      title: "Edit Category"
+      back: "Back"
+      save: "Save"
+      cancel: "Cancel"
+    form:
+      name: "Category Name"
+      save_changes: "Save Changes"

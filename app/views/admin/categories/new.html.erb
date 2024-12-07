@@ -1,7 +1,7 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Pridanie kategorie</h1>
-        <p><%= link_to "Spat", categories_path, class: "btn btn-primary" %></p>
+        <h1><%= t('categories.new.title') %></h1>
+        <p><%= link_to t('categories.new.back'), categories_path, class: "btn btn-primary" %></p>
     </div>
 
     <%= render 'shared/errors', resource: @category %>
