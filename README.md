@@ -1,36 +1,43 @@
 # README
 
-## Development
+Bazarko is a simplified marketplace application, developed as part of a Ruby on Rails course. It demonstrates user authentication, category management, and item listings.
 
+### 🛠️ Features
+•	User Registration & Login: Implemented authentication system for users.
+
+•	Category Management: Logged-in users can create and manage categories.
+
+•	Item Listings: Unregistered users can create and post items (advertisements).
+
+•	Bilingual Website: The web is available in both English and Slovak.
+
+•	Pagination & Filtering: Implemented pagination and filtering for item listings.
+
+### ⚙️ Technologies Used
+•	Ruby On Rails
+
+•	Bootstrap
+
+•	SQLite 
+
+•	Rspec (unit and integration tests)
+
+•	Cypress (e2e tests)
+
+## 🚀Development
+To start the application, run:
 ```
 ./bin/dev
 ```
 
-## Cypress
-
+## 🧪 Cypress
+To run Cypress for end-to-end tests, use:
 ```
 ./bin/cypress
 ```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-- Ruby version
-
-- System dependencies
-
-- Configuration
-
-- Database creation
-
-- Database initialization
-
-- How to run the test suite
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-
-- ...
+## 📝 Rspec
+To run RSpec tests for unit and integration tests, use:
+```
+rspec
+```
